@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+<h1>Welcome to the ToDo List Manager</h1>
+<br>
+<br>
+<p>Here you can see the current exisiting tasks:</p>
+<br>
+<ul>
+    {% for i in list %}
+        <li> {{ i[1] }} <a href="{{ url_for("removeTask", task_id= i[0]) }}">Delete</a></li>
+    {% endfor %}
+</ul>
+<p>Insert new task:
+    <br>
+    <form action="{{ url_for("newTask") }}" method="post">
+            <p>Task description: <input type="text" name = "task_description">
+                Urgent <input type="checkbox" name="urgent"></p>
+            <input type="submit" value="Enter">
+    </form>
+</p>
+</body>
+</html>
